@@ -1,1 +1,541 @@
-HH
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumit Kumar - Technical Leader & Architect</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #2980b9;
+            --text-color: #333;
+            --light-text: #666;
+            --bg-color: #f4f7f6;
+            --white: #ffffff;
+            --sidebar-width: 280px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: var(--white);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: var(--sidebar-width) 1fr;
+        }
+
+        /* --- LEFT SIDEBAR --- */
+        .sidebar {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 30px 20px;
+        }
+
+        .profile-img-placeholder {
+            width: 120px;
+            height: 120px;
+            background-color: #34495e;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #7f8c8d;
+            border: 2px solid #7f8c8d;
+        }
+
+        .sidebar h2 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            margin-top: 30px;
+            border-bottom: 1px solid #7f8c8d;
+            padding-bottom: 5px;
+            color: #bdc3c7;
+        }
+
+        .contact-info div {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            word-break: break-all;
+        }
+        
+        .contact-info a {
+            color: #ecf0f1;
+            text-decoration: none;
+        }
+
+        .contact-info svg {
+            margin-right: 10px;
+            fill: #bdc3c7;
+            width: 16px;
+            height: 16px;
+            min-width: 16px;
+        }
+
+        .skill-category {
+            margin-bottom: 15px;
+        }
+        
+        .skill-category-title {
+            font-weight: bold;
+            font-size: 0.85rem;
+            color: #3498db;
+            margin-bottom: 5px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .skill-tag {
+            background: #34495e;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .edu-item {
+            margin-bottom: 15px;
+        }
+        .edu-school {
+            font-weight: bold;
+            display: block;
+        }
+        .edu-degree {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: #bdc3c7;
+        }
+        .edu-date {
+            font-size: 0.8rem;
+            color: #95a5a6;
+        }
+
+        /* --- RIGHT MAIN CONTENT --- */
+        .main-content {
+            padding: 40px;
+        }
+
+        header {
+            margin-bottom: 30px;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+
+        .role-title {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
+            margin: 30px 0 20px;
+            letter-spacing: 1px;
+        }
+
+        .summary-text {
+            color: var(--light-text);
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .job-card {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .job-role {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .job-company {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        .job-date {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            white-space: nowrap;
+        }
+
+        .job-details ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .job-details li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        .job-details li::before {
+            content: "•";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* --- UTILS --- */
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            font-size: 1rem;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-2px);
+            background: #20638f;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                margin: 0;
+            }
+            .sidebar {
+                padding: 20px;
+            }
+            .main-content {
+                padding: 20px;
+            }
+            h1 { font-size: 2rem; }
+            .job-header {
+                flex-direction: column;
+            }
+        }
+
+        /* --- PRINT --- */
+        @media print {
+            .print-btn { display: none; }
+            body { background-color: white; }
+            .container { 
+                box-shadow: none; 
+                margin: 0; 
+                width: 100%;
+                max-width: 100%;
+            }
+            .sidebar {
+                background-color: #f0f0f0 !important;
+                color: #000 !important;
+                -webkit-print-color-adjust: exact; 
+                print-color-adjust: exact;
+            }
+            .sidebar h2 { color: #333; border-color: #999; }
+            .contact-info a, .contact-info svg { color: #333; fill: #333; }
+            .skill-tag { border: 1px solid #ccc; color: #000; background: #fff; }
+            .edu-degree, .edu-date { color: #555; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="print-btn" onclick="window.print()">Download PDF</button>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile-img-placeholder">SK</div>
+            
+            <div class="contact-section">
+                <h2>Contact</h2>
+                <div class="contact-info">
+                    <div>
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Luxembourg
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <a href="mailto:sumit.kumar@gmail.com">sumit.kumar@gmail.com</a>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 1.25 0 2.45.2 3.57.57.35.13.74.04 1.02-.24l2.2-2.2z"/></svg>
+                        <a href="tel:+352691102128">+352 691102128</a>
+                    </div>
+                </div>
+
+                <h2>Links</h2>
+                <div class="contact-info">
+                    <div>
+                        <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c.85-.05 1.72-.2 2.4-.42.68-.23 1.25-.63 1.7-1.2.46-.57.68-1.32.68-2.24 0-.44-.09-.92-.27-1.44a4.9 4.9 0 0 0-.68-1.2 4.6 4.6 0 0 0-1.2-1.2 3.7 3.7 0 0 0-1.45-.6 3.2 3.2 0 0 0-1.6.08c-.5.08-.98.24-1.43.48l-.75.46c-.52-.36-1.16-.62-1.92-.78a8.8 8.8 0 0 0-2.48-.16c-1.42.12-2.6.58-3.54 1.37a4.6 4.6 0 0 0-1.36 1.37 5 5 0 0 0-.5 1.5c-.17.6-.26 1.14-.26 1.63 0 .9.23 1.64.68 2.2.45.58 1.02.98 1.7 1.2.68.23 1.55.38 2.6.43a3.26 3.26 0 0 0-3.26 3.26v5.3h3.26v-4.66a.6.6 0 0 1 .6-.6.6.6 0 0 1 .6.6v4.66h3.26z"/></svg>
+                        <a href="https://github.com/sumitkumar/" target="_blank">github.com/sumitkumar</a>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c.85-.05 1.72-.2 2.4-.42.68-.23 1.25-.63 1.7-1.2.46-.57.68-1.32.68-2.24 0-.44-.09-.92-.27-1.44a4.9 4.9 0 0 0-.68-1.2 4.6 4.6 0 0 0-1.2-1.2 3.7 3.7 0 0 0-1.45-.6 3.2 3.2 0 0 0-1.6.08c-.5.08-.98.24-1.43.48l-.75.46c-.52-.36-1.16-.62-1.92-.78a8.8 8.8 0 0 0-2.48-.16c-1.42.12-2.6.58-3.54 1.37a4.6 4.6 0 0 0-1.36 1.37 5 5 0 0 0-.5 1.5c-.17.6-.26 1.14-.26 1.63 0 .9.23 1.64.68 2.2.45.58 1.02.98 1.7 1.2.68.23 1.55.38 2.6.43a3.26 3.26 0 0 0-3.26 3.26v5.3h3.26v-4.66a.6.6 0 0 1 .6-.6.6.6 0 0 1 .6.6v4.66h3.26z"/></svg>
+                        <a href="https://www.linkedin.com/in/sumitkumar-n/" target="_blank">in/sumitkumar-n</a>
+                    </div>
+                </div>
+
+                <h2>Skills</h2>
+                <div class="skill-category">
+                    <div class="skill-category-title">Languages</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Elixir</span>
+                        <span class="skill-tag">Erlang</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Swift</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">Infrastructure & DevOps</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Ansible</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">GCP</span>
+                        <span class="skill-tag">Linux</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">Data & Search</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Postgres</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Redis</span>
+                        <span class="skill-tag">Solr</span>
+                        <span class="skill-tag">ElasticSearch</span>
+                        <span class="skill-tag">Aerospike</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">Web & Frameworks</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Phoenix</span>
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">Node/Express</span>
+                        <span class="skill-tag">Rails</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">MQTT</span>
+                        <span class="skill-tag">RabbitMQ</span>
+                    </div>
+                </div>
+
+                <h2>Education</h2>
+                <div class="edu-item">
+                    <span class="edu-school">IIT Bombay</span>
+                    <span class="edu-degree">EE (Comms and Signal Processing)</span>
+                    <span class="edu-date">2004 (Dropout)</span>
+                    <div style="font-size: 0.8rem; margin-top:5px; color:#bdc3c7;">Focus: Image recognition using Aspect Graphs</div>
+                </div>
+                
+                <h2>Languages</h2>
+                <div class="edu-item">
+                    <span class="edu-school">English</span>
+                    <span class="edu-degree">Full Professional Proficiency</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <h1>Sumit Kumar</h1>
+                <div class="role-title">Technical Leader & Solutions Architect</div>
+            </header>
+
+            <section>
+                <h3 class="section-title">Professional Summary</h3>
+                <p class="summary-text">
+                    Passionate Tech Leader with extensive experience working in start-ups at various stages. Expertise in efficient application design, scaling applications and teams, improving DevOps processes (by abstracting infrastructure and services), and minimizing technical debt. Special emphasis on developer workflow design to improve application performance, deployment automation, and improving overall developer productivity. Proven track record of consulting with multiple start-ups to diagnose business challenges and implement robust technical strategies.
+                </p>
+            </section>
+
+            <section>
+                <h3 class="section-title">Work Experience</h3>
+
+                <article class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <span class="job-role">Independent Consultant</span>
+                            <span class="job-company"> // Startups & SMEs</span>
+                        </div>
+                        <span class="job-date">Mar 2023 - Present</span>
+                    </div>
+                    <div class="job-details">
+                        <ul>
+                            <li>Conduct in-depth client consultations to diagnose business challenges and create product strategy.</li>
+                            <li>Lead system design, architecture, and engineering for new product developments.</li>
+                            <li>Analyze product specifications and requirements to drive technical execution.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <span class="job-role">Technical Consultant</span>
+                            <span class="job-company"> // Various Startups (Mumbai)</span>
+                        </div>
+                        <span class="job-date">2012 - 2019</span>
+                    </div>
+                    <div class="job-details">
+                        <ul>
+                            <li>Diagnosed organizational challenges across operations, strategy, and technology domains.</li>
+                            <li>Conducted client needs assessments to streamline technical operations.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <span class="job-role">Tech Team Member</span>
+                            <span class="job-company"> // Piggy.co.in</span>
+                        </div>
+                        <span class="job-date">Jun 2018 - Oct 2018</span>
+                    </div>
+                    <div class="job-details">
+                        <ul>
+                            <li>Architected database migration plan to Amazon RDS, automating replication for devs/ops with data sanitization and privacy compliance.</li>
+                            <li>Engineered search infrastructure and backend search APIs using Elasticsearch.</li>
+                            <li>Refactored application worker queue architecture and API integrations to resolve critical bugs.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <span class="job-role">Consultant</span>
+                            <span class="job-company"> // Revcontent.com</span>
+                        </div>
+                        <span class="job-date">May 2017 - Mar 2018</span>
+                    </div>
+                    <div class="job-details">
+                        <ul>
+                            <li>Implemented a high-scale ranking algorithm for URLs/news articles by domain and topic using AWS DynamoDB/Java.</li>
+                            <li>Created video encoding and transcription workflows using Amazon Elastic Transcoder and Amazon Transcribe.</li>
+                            <li>Refactored event processing pipelines acquired from Rover/Flipora (content discovery app).</li>
+                            <li>Contributed to the initial build of powr.com.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <span class="job-role">Head of Operations Technology</span>
+                            <span class="job-company"> // Housing.com</span>
+                        </div>
+                        <span class="job-date">Jan 2013 - Dec 2015</span>
+                    </div>
+                    <div class="job-details">
+                        <ul>
+                            <li><strong>Impact:</strong> Improved operational time for real estate listing (data collection to live) from 2 days to under 1 hour.</li>
+                            <li>Established and led the Bangalore technical team to build internal products for operations and data collection.</li>
+                            <li>Built microservices APIs for internal services and created starter projects to bootstrap new APIs quickly.</li>
+                            <li>Architected an analytics and event pipeline for Web/Android/iOS using MQTT protocol and emqtt (Erlang broker) for high concurrency.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <span class="job-role">Tech Team Member</span>
+                            <span class="job-company"> // Chaupaati</span>
+                        </div>
+                        <span class="job-date">Jan 2008 - Dec 2009</span>
+                    </div>
+                    <div class="job-details">
+                        <ul>
+                            <li>Worked as Full-Stack developer on Search (Solr) within a Java/GWT application environment.</li>
+                            <li>Addressed critical bugs in core APIs to improve system stability.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <span class="job-role">Sr. Software Engineer</span>
+                            <span class="job-company"> // ANMSoft</span>
+                        </div>
+                        <span class="job-date">Jan 2007 - Dec 2008</span>
+                    </div>
+                    <div class="job-details">
+                        <ul>
+                            <li>Led technical teams servicing major e-commerce clients (Homeshop18, Times Shopping, Ferns & Petals) focusing on search, DB migration, and performance profiling.</li>
+                            <li>Led development of the first prototype for Octashop, an internal product for building client e-commerce stores.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <span class="job-role">Product Manager / Engineer</span>
+                            <span class="job-company"> // Bizos Software</span>
+                        </div>
+                        <span class="job-date">Jan 2004 - Dec 2007</span>
+                    </div>
+                    <div class="job-details">
+                        <ul>
+                            <li>Built a configurable messaging API over HTTPS with a C#.NET client SDK for distributed accounting data sharing.</li>
+                            <li>Enabled synchronization of C#.NET/MSSQL applications across multiple geographical locations.</li>
+                        </ul>
+                    </div>
+                </article>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
