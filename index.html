@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumit Kumar - Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
+    <style>
+        /* THEME VARIABLES 
+           We override GitHub's default variables based on the data-theme attribute
+        */
+        :root[data-theme="dark"] {
+            --bg-color: #0d1117;
+            --text-color: #c9d1d9;
+            --border-color: #30363d;
+            --link-color: #58a6ff;
+            --btn-bg: #21262d;
+            --btn-border: #363b42;
+        }
+
+        :root[data-theme="light"] {
+            --bg-color: #ffffff;
+            --text-color: #24292f;
+            --border-color: #d0d7de;
+            --link-color: #0969da;
+            --btn-bg: #f6f8fa;
+            --btn-border: #d0d7de;
+        }
+
+        /* Base Body Styles */
+        body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+            background-color: var(--bg-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Container Styling */
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: var(--bg-color) !important; /* Force override */
+            color: var(--text-color) !important;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* Fix links inside markdown body to match theme */
+        .markdown-body a {
+            color: var(--link-color);
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 767px) {
+            .markdown-body { padding: 15px; }
+            body { padding: 15px; }
+        }
+        
+        /* Badge spacing helper */
+        .badge-group img {
+            margin-bottom: 4px;
+            margin-right: 4px;
+        }
+
+        /* --- THEME TOGGLE BUTTON STYLES --- */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--btn-bg);
+            border: 1px solid var(--btn-border);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--text-color);
+            transition: fill 0.3s ease;
+        }
+
+        /* Hide icons based on active theme */
+        [data-theme="dark"] .icon-moon { display: none; }
+        [data-theme="light"] .icon-sun { display: none; }
+
+    </style>
+</head>
+<body>
+
+    <button class="theme-toggle" id="theme-btn" aria-label="Toggle Dark/Light Mode">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 9c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
+        </svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
+        </svg>
+    </button>
+
+    <article class="markdown-body">
+        
+        <h1>Hi there, I'm Sumit Kumar 👋</h1>
+
+        <h3>Technical Leader & Solutions Architect based in Luxembourg 🇱🇺</h3>
+
+        <p>I am a passionate Tech Leader with extensive experience working with startups at various stages. My expertise lies in efficient application/system/infrstructure design, scaling applications and teams, improving DevOps processes, and minimizing technical debt.</p>
+
+        <ul>
+            <li>🔭 I’m currently working as an <strong>Independent Consultant</strong> helping startups diagnose business challenges and drive technical execution.</li>
+            <li>💬 Ask me about <strong>System Design and Architecture, Infrastructure planning, orchestration and DevOps.</strong></li>
+            <li>📫 How to reach me: firstname.lastname@gmail.com</a></li>
+        </ul>
+
+        <hr>
+
+        <h3>🛠 Tech Stack</h3>
+
+        <p><strong>Languages</strong><br>
+        <span class="badge-group">
+            <img src="https://img.shields.io/badge/elixir-%234B275F.svg?style=for-the-badge&logo=elixir&logoColor=white" alt="Elixir">
+            <img src="https://img.shields.io/badge/Erlang-white.svg?style=for-the-badge&logo=erlang&logoColor=a90533" alt="Erlang">
+            <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" alt="Python">
+            <img src="https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white" alt="C">
+            <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java">
+            <img src="https://img.shields.io/badge/swift-F05138?style=for-the-badge&logo=swift&logoColor=white" alt="Swift">
+        </span>
+        </p>
+
+        <p><strong>Infrastructure & DevOps</strong><br>
+        <span class="badge-group">
+            <img src="https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white" alt="Kubernetes">
+            <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
+            <img src="https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="AWS">
+            <img src="https://img.shields.io/badge/GoogleCloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white" alt="Google Cloud">
+            <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux">
+            <img src="https://img.shields.io/badge/ansible-%231A1918.svg?style=for-the-badge&logo=ansible&logoColor=white" alt="Ansible">
+        </span>
+        </p>
+
+        <p><strong>Data & Search</strong><br>
+        <span class="badge-group">
+            <img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white" alt="Postgres">
+            <img src="https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white" alt="Redis">
+            <img src="https://img.shields.io/badge/-ElasticSearch-005571?style=for-the-badge&logo=elasticsearch" alt="ElasticSearch">
+            <img src="https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
+        </span>
+        </p>
+
+        <p><strong>Web & Frameworks</strong><br>
+        <span class="badge-group">
+            <img src="https://img.shields.io/badge/phoenix-%23FD4F00.svg?style=for-the-badge&logo=phoenix&logoColor=black" alt="Phoenix">
+            <img src="https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white" alt="Django">
+            <img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white" alt="NodeJS">
+            <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React">
+            <img src="https://img.shields.io/badge/Rabbitmq-FF6600?style=for-the-badge&logo=rabbitmq&logoColor=white" alt="RabbitMQ">
+        </span>
+        </p>
+
+        <hr>
+        
+        <h3>📄 Resume</h3>
+        <p>
+            For a comprehensive breakdown of my work experience, project leadership, and technical history, please view my full resume.
+        </p>
+        <p>
+            👉 <a href="./resume"><strong>View Full Resume</strong></a>
+        </p>
+        
+        <hr>
+    </article>
+
+    <script>
+        // Logic to toggle theme
+        const btn = document.getElementById('theme-btn');
+        const html = document.documentElement;
+        
+        // 1. Check localStorage or System Preference on Load
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+        } else {
+            html.setAttribute('data-theme', systemPrefersDark ? 'dark' : 'light');
+        }
+
+        // 2. Button Click Listener
+        btn.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
+
+</body>
+</html>
